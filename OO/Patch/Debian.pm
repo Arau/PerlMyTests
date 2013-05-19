@@ -29,9 +29,10 @@ sub update_packages_cmd {
 sub parse_updates_list {
     my ($self, $list) = @_;
 
-    foreach my $line ($list) {
-        my ($name, $version, $avail) = split /;/, $list;
-        self->packages->add_item(Patching::Package->new(
+    my @lines = split /\n/, $list;
+    foreach my $line (@lines) {
+        my ($name, $version, $avail) = split /;/, $line;
+        $self->add_item(Patch::Package->new(
                 {
                     name              => $name,
                     version           => $version,
