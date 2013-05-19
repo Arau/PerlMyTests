@@ -1,4 +1,4 @@
-package Patch::Debian::Tests;
+package Patch::Tests::Debian;
 
 use Test::More;
 use Patch::Debian;

@@ -1,4 +1,4 @@
-package Patch::Package::Tests;
+package Patch::Tests::Package;
 
 use Test::More;
 use Patch::Package;
