@@ -36,10 +36,10 @@ my $raw_list = "Perl;5.10;5.18\ngcc;3.12;4.1";
 #Tests
 #
 
-ok($obj, "Instantiate object");
-is($obj->update_repo_cmd, "aptitude update", "Aptitude update command");
-is($obj->updates_list_cmd, "aptitude search --disable-columns -F '%p;%v;%V' ~U", "Aptitude search upgradable packages");
-is($obj->update_packages_cmd, "aptitude safe-upgrade -y -o APT::Get::AllowUnauthenticated=true", "Aptitude safe-upgrade assume yes");
+ok $obj, "Instantiate object";
+is $obj->update_repo_cmd, "aptitude update", "Aptitude update command";
+is $obj->updates_list_cmd, "aptitude search --disable-columns -F '%p;%v;%V' ~U", "Aptitude search upgradable packages";
+is $obj->update_packages_cmd, "aptitude safe-upgrade -y -o APT::Get::AllowUnauthenticated=true", "Aptitude safe-upgrade assume yes";
 
 #ToDo with subtest
 #$obj->parse_updates_list($raw_list);
