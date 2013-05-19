@@ -44,7 +44,9 @@ sub parse_updates_list {
 sub print_updates {
     my $self = shift;
     map {
-        print "Package: $_->get_name, Version: $_->get_version Available: $_->get_available_version \n"
+        print "Package: $_->get_name ";
+        print "Version: $_->get_version ";
+        print "Available: $_->get_available_version \n";
     } @$self->packages;
 }
 
