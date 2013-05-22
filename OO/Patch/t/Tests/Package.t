@@ -1,10 +1,14 @@
 package Patch::Tests::Package;
 
 use Test::More;
-use Patch::Package;
 
 use strict;
 use warnings;
+
+
+BEGIN {
+    use_ok 'Patch::Package';
+}
 
 my $obj = Patch::Package->new({
         name              => 'MySQL',
@@ -12,10 +16,10 @@ my $obj = Patch::Package->new({
         available_version => '5.5',
     });
 
-ok($obj, "Instantiate object");
+isa_ok $obj, 'Patch::Package', "Instantiate object";
 
-is($obj->get_name(), 'MySQL', "Right name");
-is($obj->get_version(), '5.1', "Right current version");
-is($obj->get_available_version(), '5.5', "Right available version");
+is $obj->get_name(), 'MySQL', "Right name";
+is $obj->get_version(), '5.1', "Right current version";
+is $obj->get_available_version(), '5.5', "Right available version";
 
 done_testing();

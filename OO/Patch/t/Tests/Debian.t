@@ -1,11 +1,14 @@
 package Patch::Tests::Debian;
 
 use Test::More;
-use Patch::Debian;
-use Patch::Package;
 
 use strict;
 use warnings;
+
+BEGIN {
+    use_ok 'Patch::Debian';
+    use_ok 'Patch::Package';
+}
 
 #
 # Previous stubs
@@ -34,7 +37,7 @@ my $obj = Patch::Debian->new(
 #
 
 subtest 'Debian commands' => sub {
-    ok $obj, "Instantiate object";
+    isa_ok $obj, 'Patch::Debian', "Instantiate object";
 
     is $obj->update_repo_cmd, "aptitude update", "Aptitude update command";
 
