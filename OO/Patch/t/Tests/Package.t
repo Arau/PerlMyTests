@@ -1,5 +1,3 @@
-package Patch::Tests::Package;
-
 use Test::More;
 
 use strict;

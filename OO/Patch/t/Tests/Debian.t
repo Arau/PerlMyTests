@@ -1,5 +1,3 @@
-package Patch::Tests::Debian;
-
 use Test::More;
 
 use strict;
