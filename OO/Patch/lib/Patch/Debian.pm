@@ -8,8 +8,10 @@ has 'packages' => (
     traits  => ['Array'],
     default => sub { [] },
     handles => {
-        add_item  => 'push',
-        next_item => 'shift',
+        get_all    => 'elements',
+        add_item   => 'push',
+        next_item  => 'shift',
+        map        => 'map',
     },
     reader  => 'get_packages',
 );
@@ -44,11 +46,14 @@ sub parse_updates_list {
 
 sub print_updates {
     my $self = shift;
-    map {
-        print "Package: $_->get_name ";
-        print "Version: $_->get_version ";
-        print "Available: $_->get_available_version \n";
-    } @$self->packages;
+
+    $self->map(
+        sub {
+            print "Package: "    , $_->get_name(),    "\n";
+            print "\tVersion: "  , $_->get_version(), "\n";
+            print "\tAvailable: ", $_->get_available_version();
+            print "\n" x 2;
+        });
 }
 
 
