@@ -9,19 +9,13 @@ has 'name' => (
     reader  => 'get_name',
 );
 
-has 'version' => (
-    is      => 'ro',
-    isa     => 'Str',
-    writer  => 'set_version',
-    reader  => 'get_version',
-);
-
-has 'available_version' => (
-    is      => 'ro',
-    isa     => 'Str',
-    writer  => 'set_available_version',
-    reader  => 'get_available_version',
-);
-
+for my $name ( qw/version available_version/ ) {
+    has $name => (
+        is      => 'ro',
+        isa     => 'Str',
+        writer  => "set_$name",
+        reader  => "get_$name",
+    );
+}
 
 1;
